@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+	<title>JQuery ShowHide plugin</title>
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="jquery.showhide.js"></script>
+	<script>
+		hljs.tabReplace = '   '; // 4 spaces
+		hljs.initHighlightingOnLoad();
+	</script>
+	<script>
+		$(function () {
+			$.cookie.json = true;
+			$('.block1').showHide();
+			$('.block2').showHide({
+				cookieName: 'cookie-1',
+				clickElem: '.control',
+				visible: true,
+				time: 0
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h1>JQuery ShowHide plugin</h1>
+	<p>Показ/cкрытие блоков с запоминаем состояния.</p>
+	<p>Для работы плагина необходимо включить поддержку JSON:</p>
+	<pre><code class="javascript">
+$.cookie.json = true; //включение обрабоки JSON в куках.
+		</code></pre>
+	<ul class="examples">
+		<li>
+			<div class="desc">
+				<p>Вызов плагина без параметров.</p>
+				<p>Клик отслеживается на первом дочернем элементе внутри блока. Aнимационный эффект slideUp/slideDown со временем анимации 400 мс применяется ко второму дочернему элементу блока. Имя куки устанавливается равным адресу текущей страницы (имя хоста + путь).</p>
+			</div>
+			<pre><code class="html">
+&lt;div class=&quot;block1&quot;&gt;
+	&lt;a href=&quot;#&quot;&gt;Юпитер - это потухшая звезда?&lt;/a&gt;
+	&lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;
+<br>
+&lt;div class=&quot;block1&quot;&gt;
+	&lt;a href=&quot;#&quot;&gt;Как выключить компьютер?&lt;/a&gt;
+	&lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;
+			</code></pre>
+			<pre><code class="javascript">
+$('.block1').showHide();
+			</code></pre>
+			<p>Пример:</p>
+			<div class="ex ex1">
+				<div class="block block1">
+					<a href="#">Юпитер - это потухшая звезда?</a>
+					<p>У планет-гигантов нет твёрдой поверхности, таким образом Каллисто вращает математический горизонт, тем не менее, уже 4,5 млрд лет расстояние нашей планеты от Солнца практически не меняется. Маятник Фуко выбирает центральный Млечный Путь, в таком случае эксцентриситеты и наклоны орбит возрастают.</p>
+				</div>
+
+				<div class="block1">
+					<a href="#">Как выключить компьютер?</a>
+					<p>Связное множество создает математический анализ, в итоге приходим к логическому противоречию. Интегрирование по частям усиливает невероятный график функции многих переменных, откуда следует доказываемое равенство. Согласно предыдущему, определитель системы линейных уравнений программирует лист Мёбиуса, в итоге приходим к логическому противоречию.</p>
+				</div>
+			</div>
+		</li>
+		<li>
+			<p>Вызов плагина с параметрами.</p>
+			<p>В данном примере явно задано имя куки равное <code>cookie-1</code>, внутри блока клик отслеживается на элементе с классом <code>control</code> ; первоначально блоки показаны, мгновенный показ/отображение второго дочернего элемента блока (время анимации 0 мс).</p>
+			<pre><code class="html">
+&lt;div class=&quot;block2&quot;&gt;
+	&lt;div class=&quot;block2_header&quot;&gt;
+		&lt;h3&gt;Настройки&lt;/h3&gt;
+		&lt;span class=&quot;control&quot;&gt;&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;block2&quot;&gt;
+	&lt;div class=&quot;block2_header&quot;&gt;
+		&lt;h3&gt;Настройки 2&lt;/h3&gt;
+		&lt;span class=&quot;control&quot;&gt;&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;
+			</code></pre>
+			<pre><code class="javascript">
+$('.block2').showHide({
+	cookieName: 'cookie-1',
+	clickElem: '.control',
+	visible: true,
+	time: 0
+});
+			</code></pre>
+			<p>Пример:</p>
+			<div class="ex ex2">
+				<div class="block block2">
+					<div class="block2_header">
+						<h3>Настройки</h3>
+						<span class="control"></span>
+					</div>
+					<p>Вероятностная логика, по определению, трансформирует предмет деятельности, изменяя привычную реальность. Гегельянство непредсказуемо. Платоновская академия, следовательно, естественно порождает и обеспечивает гедонизм, открывая новые горизонты.</p>
+				</div>
+
+				<div class="block2">
+					<div class="block2_header">
+						<h3>Настройки 2</h3>
+						<span class="control"></span>
+					</div>
+					<p>Плазменное образование заряжено. Если предварительно подвергнуть объекты длительному вакуумированию, колебание излучает плазменный квант, что лишний раз подтверждает правоту Эйнштейна. Силовое поле притягивает тангенциальный луч при любом агрегатном состоянии среды взаимодействия. Химическое соединение вертикально индуцирует экситон одинаково по всем направлениям.</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</body></html>
