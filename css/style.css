@@ -10,11 +10,6 @@ h1,h2,h3,h4 {
 p,pre {
 	margin:1em 0;
 	}
-a {
-	border-bottom:1px dotted;
-	text-decoration:none; 
-	color:#1560bd;
-	}
 pre,code {
 	font-family: Consolas, 'Lucida Console', monospace;
 	}
@@ -37,6 +32,10 @@ pre code:before {
 h1 {margin-top:20px;}
 h1 + p {border-bottom:2px solid; margin-bottom:3em;}
 
+.as-link {
+	border-bottom:1px dotted;
+	color:#1560bd;
+	cursor:pointer;}
 .examples li {
 	margin:1em 0 3em;
 	}

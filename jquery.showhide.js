@@ -11,10 +11,10 @@
 			cookieName : ( window.location.host + window.location.pathname ).replace( /\//g, '-' ),
 			visible : false,
 			time : 400,
-			clickElem : null,
+			clickElem : '> :first-child',
 			clickElemClassVisible : 'visible',
 			clickElemClassHidden : 'hidden',
-			foldElem : null,
+			foldElem : '> :nth-child(2)',
 			cookieExpires : 30,
 			cookiePath : '/'
 		},
@@ -43,8 +43,8 @@
 		init : function( counter ) {
 			var opts = this.options,
 				block = $( this.element ),
-				clickable = opts.clickElem ? block.find( opts.clickElem ) : block.find( '> :first-child' ),
-				foldable = opts.foldElem ? block.find( opts.foldElem ) : block.find( '> :nth-child(2)' ),
+				clickable = block.find( opts.clickElem ),
+				foldable = block.find( opts.foldElem ),
 				indx = this.i;
 
 			clickable.on('click', function ( e ) {
@@ -86,8 +86,8 @@
 			cookieLength = !!cookie && cookie.length,
 			elsLength = this.length,
 			elsPos = storeElsPos( elsLength, opts.visible ),
-			clickable = opts.clickElem ? this.find( opts.clickElem ) : this.find( '> :first-child' ),
-			foldable = opts.foldElem ? this.find( opts.foldElem ) : this.find( '> :nth-child(2)' ),
+			clickable = this.find( opts.clickElem ),
+			foldable = this.find( opts.foldElem ),
 			locateEls = function( flag ) {
 				if ( flag ) {
 					$( foldable[ i ] ).show();
